@@ -8,8 +8,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 
-import numpy as np
-
 class PhiInv(nn.Module):
     def __init__(self, phi):
         super(PhiInv, self).__init__()
@@ -259,12 +257,11 @@ class MixExpPhi(nn.Module):
     '''
 
     def __init__(self, init_w=None, N=2):
-        import numpy as np
         super(MixExpPhiStatic, self).__init__()
 
         if init_w is None:
-            self.mix = nn.Parameter(torch.tensor(np.log(np.random.rand(N)), requires_grad=True))
-            self.slope = nn.Parameter(torch.log(torch.tensor(10**(np.random.rand(N)*6), requires_grad=True)))
+            self.mix = nn.Parameter(torch.log(torch.rand(N)), requires_grad=True)
+            self.slope = nn.Parameter(torch.log(10)*(torch.rand(N)*6), requires_grad=True)
         else:
             assert len(init_w) == 2
             assert init_w[0].numel() == init_w[1].numel()
