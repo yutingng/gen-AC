@@ -12,10 +12,6 @@ from scipy.stats import invweibull
 import scipy
 import numpy as np
 
-pi  = torch.tensor(np.pi)
-dist = {}
-dist['Normal_0_1'] = torch.distributions.normal.Normal(torch.tensor([0.0]), torch.tensor([1.0]))
-
 class PhiInv(nn.Module):
     def __init__(self, phi):
         super(PhiInv, self).__init__()
