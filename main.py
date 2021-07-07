@@ -8,8 +8,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 
-from scipy.stats import invweibull
-import scipy
 import numpy as np
 
 class PhiInv(nn.Module):
